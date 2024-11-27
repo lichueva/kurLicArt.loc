@@ -3,10 +3,22 @@
 namespace app\modules\admin\controllers;
 
 use app\models\Article;
+use app\models\ImageUpload;
 use app\models\ArticleSearch;
+use app\models\Category;
+use app\models\Tag;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
+
+
 use yii\filters\VerbFilter;
+
+use yii\helpers\ArrayHelper;
+
+
+use Yii;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -130,5 +142,64 @@ class ArticleController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload;
+
+        if (Yii::$app->request->isPost)
+        {
+            $article = $this->findModel($id);
+            $file = UploadedFile::getInstance($model, 'image');
+
+            if($article->saveImage($model->uploadFile($file, $article->image)))
+            {
+                return $this->redirect(['view', 'id'=>$article->id]);
+            }
+        }
+        
+        return $this->render('image', ['model'=>$model]);
+    }
+
+    public function actionSetCategory($id)
+    {
+        $article = $this->findModel($id);
+        $selectedCategory = $article->category->id;
+        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+
+        if(Yii::$app->request->isPost)
+        {
+            $category = Yii::$app->request->post('category');
+            if($article->saveCategory($category))
+            {
+                return $this->redirect(['view', 'id'=>$article->id]);
+            }
+        }
+
+        return $this->render('category', [
+            'article'=>$article,
+            'selectedCategory'=>$selectedCategory,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function actionSetTags($id)
+    {
+        $article = $this->findModel($id);
+        $selectedTags = $article->getSelectedTags(); //
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
+
+        if(Yii::$app->request->isPost)
+        {
+            $tags = Yii::$app->request->post('tags');
+            $article->saveTags($tags);
+            return $this->redirect(['view', 'id'=>$article->id]);
+        }
+        
+        return $this->render('tags', [
+            'selectedTags'=>$selectedTags,
+            'tags'=>$tags
+        ]);
     }
 }
