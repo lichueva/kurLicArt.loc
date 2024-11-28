@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,10 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Category $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                // 'class' => ActionColumn::className(),
+                // 'urlCreator' => function ($action, Category $model, $key, $index, $column) {
+                //     return Url::toRoute([$action, 'id' => $model->id]);
+                // }
+                'class' => 'yii\grid\ActionColumn'
             ],
         ],
     ]); ?>
