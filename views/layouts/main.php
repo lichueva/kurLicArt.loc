@@ -5,11 +5,7 @@
 
 use app\assets\AppAsset;
 use app\assets\PublicAsset;
-use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 use yii\helpers\Url;
 
 PublicAsset::register($this);
@@ -29,176 +25,106 @@ PublicAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar main-menu navbar-default">
-        <div class="container">
-            <div class="menu-content">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img src="/public/images/logo.png?v=<?= time(); ?>" alt=""></a>
-                </div>
-
-
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                    <ul class="nav navbar-nav text-uppercase">
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
-
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="/public/images/logo.png?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 40px;">
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="/">Головна</a>
+                    </li>
+                </ul>
+                <?php if (Yii::$app->user->isGuest) : ?>
+                    <ul class="navbar-nav mb-2 mb-lg-0 fs-4">
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/login']) ?>">Вхід</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
                         </li>
                     </ul>
-                    <div class="i_con">
-                        <ul class="nav navbar-nav text-uppercase">
-                            <?php if (Yii::$app->user->isGuest) : ?>
-                                <li><a href="<?= Url::toRoute(['auth/login']) ?>">Login</a></li>
-                                <li><a href="<?= Url::toRoute(['auth/signup']) ?>">Register</a></li>
-                            <?php else : ?>
-                                <?= Html::beginForm(['/auth/logout'], 'post')
-                                    . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->name . ')',
-                                        ['class' => 'btn btn-link logout', 'style' => "padding-top:10px;"]
-                                    )
-                                    . Html::endForm() ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /.navbar-collapse -->
+                <?php else : ?>
+                    <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
+                    <?= Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->name . ')',
+                        ['class' => 'btn btn-link nav-link fs-4 fw-bold']
+                    ) ?>
+                    <?= Html::endForm() ?>
+                <?php endif; ?>
+                <form class="d-flex ms-3" role="search" method="get" action="<?= Url::to(['site/search']) ?>">
+                    <input class="form-control me-2 fs-4" type="search" name="text" placeholder="Що шукаємо?" aria-label="Пошук">
+                    <button class="btn btn-outline-primary fs-4 fw-bold" type="submit">Пошук</button>
+                </form>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
 
-    <?= $content ?>
 
 
-    <footer class="footer-widget-section">
+    <div class="content">
+        <?= $content ?>
+    </div>
+
+    <footer class="footer-widget-section bg-dark text-white py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <div class="about-img"><img src="/public/images/logo2.png" alt=""></div>
-                        <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
-                            accusam et justo duo dlores et ea rebum magna text ar koto din.
+                        <div class="about-img">
+                            <img src="/public/images/logo2.png" alt="">
                         </div>
-                        <div class="address">
-                            <h4 class="text-uppercase">contact Info</h4>
-
-                            <p> 14529/12 NK Streets, DC, KZ</p>
-
-                            <p> Phone: +123 456 78900</p>
-
-                            <p>mytreasure.com</p>
+                        <div class="about-content mt-3">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                            ut labore et dolore magna aliquyam erat, sed voluptua.
+                        </div>
+                        <div class="address mt-3">
+                            <h4>Contact Info</h4>
+                            <p>14529/12 NK Streets, DC, KZ</p>
+                            <p>Phone: +123 456 78900</p>
+                            <p>Email: info@mytreasure.com</p>
                         </div>
                     </aside>
                 </div>
-
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Testimonials</h3>
-
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!--Indicator-->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/public/images/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>CEO, ReadyTheme</h4>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <h4>Testimonials</h4>
+                        <div class="carousel slide" id="testimonialsCarousel" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                                    <strong>Sophia, CEO ReadyTheme</strong>
                                 </div>
-                                <div class="item">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/public/images/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>CEO, ReadyTheme</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/public/images/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>CEO, ReadyTheme</h4>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="carousel-item">
+                                    <p>At vero eos et accusam justo duo dolores et ea rebum.</p>
+                                    <strong>John, Manager</strong>
                                 </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
                         </div>
-
                     </aside>
                 </div>
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Custom Category Post</h3>
-
-
+                        <h4>Custom Category Post</h4>
                         <div class="custom-post">
-                            <div>
-                                <a href="#"><img src="/public/images/footer-img.png" alt=""></a>
-                            </div>
-                            <div>
-                                <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                                <span class="p-date">February 15, 2016</span>
-                            </div>
+                            <a href="#">
+                                <img src="/public/images/footer-img.png" alt="" class="img-fluid rounded mb-2">
+                            </a>
+                            <a href="#" class="text-white text-decoration-none">Home is Peaceful Place</a>
+                            <p class="text-muted">February 15, 2016</p>
                         </div>
                     </aside>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copy">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="text-center">&copy; 2015 <a href="#">Treasure PRO, </a> Built with <i class="fa fa-heart"></i> by <a href="#">Rahim</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
