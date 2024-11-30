@@ -39,7 +39,7 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                ['label' => 'Home', 'url' => ['/admin/default/index']],
+                ['label' => 'Головна', 'url' => ['/admin/default/index']],
                 ['label' => 'Articles', 'url' => ['/admin/article/index']],
                 ['label' => 'Commentaries', 'url' => ['/admin/comment/index']],
                 ['label' => 'Categories', 'url' => ['/admin/category/index']],
