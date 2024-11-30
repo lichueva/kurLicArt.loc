@@ -34,14 +34,13 @@ PublicAsset::register($this);
             <div class="menu-content">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><img src="/public/images/logo.jpg" alt=""></a>
+                    <a class="navbar-brand" href="/"><img src="/public/images/logo.png?v=<?= time(); ?>" alt=""></a>
                 </div>
 
 
@@ -54,10 +53,10 @@ PublicAsset::register($this);
                     </ul>
                     <div class="i_con">
                         <ul class="nav navbar-nav text-uppercase">
-                            <?php if (Yii::$app->user->isGuest): ?>
+                            <?php if (Yii::$app->user->isGuest) : ?>
                                 <li><a href="<?= Url::toRoute(['auth/login']) ?>">Login</a></li>
                                 <li><a href="<?= Url::toRoute(['auth/signup']) ?>">Register</a></li>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <?= Html::beginForm(['/auth/logout'], 'post')
                                     . Html::submitButton(
                                         'Logout (' . Yii::$app->user->identity->name . ')',
@@ -197,8 +196,7 @@ PublicAsset::register($this);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center">&copy; 2015 <a href="#">Treasure PRO, </a> Built with <i
-                                class="fa fa-heart"></i> by <a href="#">Rahim</a>
+                        <div class="text-center">&copy; 2015 <a href="#">Treasure PRO, </a> Built with <i class="fa fa-heart"></i> by <a href="#">Rahim</a>
                         </div>
                     </div>
                 </div>
