@@ -19,14 +19,15 @@ class PublicAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        
+        "public/css/bootstrap.min.css",
         "public/css/font-awesome.min.css",
         "public/css/animate.min.css",
         "public/css/owl.carousel.css",
         "public/css/owl.theme.css",
         "public/css/owl.transitions.css",
         "public/css/style.css",
-        "public/css/responsive.css", "public/css/bootstrap.min.css",
+        "public/css/responsive.css", 
+        
     ];
     public $js = [
         //        "public/js/jquery-1.11.3.min.js",
@@ -37,4 +38,18 @@ class PublicAsset extends AssetBundle
         "public/js/scripts.js",
     ];
     public $depends = [];
+
+    public function init()
+    {
+        parent::init();
+
+        // Додаємо мітку часу або іншу версію до всіх ресурсів
+        $this->css = array_map(function ($file) {
+            return $file . '?v=' . filemtime(\Yii::getAlias('@webroot') . '/' . $file);
+        }, $this->css);
+
+        $this->js = array_map(function ($file) {
+            return $file . '?v=' . filemtime(\Yii::getAlias('@webroot') . '/' . $file);
+        }, $this->js);
+    }
 }

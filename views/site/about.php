@@ -3,9 +3,11 @@
 /** @var yii\web\View $this */
 
 use yii\helpers\Html;
+use app\assets\PublicAsset;
 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
+PublicAsset::register($this);
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
