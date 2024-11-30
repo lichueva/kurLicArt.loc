@@ -26,7 +26,7 @@ PublicAsset::register($this);
     <?php $this->beginBody() ?>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div class="container-fluid ms-5 me-5">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,13 +56,34 @@ PublicAsset::register($this);
                     ) ?>
                     <?= Html::endForm() ?>
                 <?php endif; ?>
-                <form class="d-flex ms-3" role="search" method="get" action="<?= Url::to(['site/search']) ?>">
-                    <input class="form-control me-2 fs-4" type="search" name="text" placeholder="Що шукаємо?" aria-label="Пошук">
-                    <button class="btn btn-outline-primary fs-4 fw-bold" type="submit">Пошук</button>
-                </form>
+                <aside class="border p-4 rounded-3 widget-search">
+                    <?php $form = \yii\widgets\ActiveForm::begin([
+                        'method' => 'get',
+                        'action' => Url::to(['site/search']),
+                        'options' => ['class' => 'search-form', 'role' => 'form'],
+                    ]); ?>
+
+                    <div class="input-group mb-4">
+                        <?= $form->field(new \app\models\SearchForm(), 'text')->textInput([
+                            'class' => 'form-control form-control-lg border-0 rounded-3 shadow-sm',
+                            'placeholder' => 'Введіть текст для пошуку...',
+                            'aria-label' => 'Пошук'
+                        ])->label(false); ?>
+
+                        <button class="btn btn-primary btn-lg rounded-3" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <?php \yii\widgets\ActiveForm::end(); ?>
+                </aside>
+
+
             </div>
         </div>
     </nav>
+
+
 
 
 

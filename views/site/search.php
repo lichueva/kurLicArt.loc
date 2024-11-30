@@ -3,24 +3,39 @@
 use yii\widgets\ListView;
 use yii\helpers\Html;
 
-$this->title = 'Search Results54';
+$this->title = 'Результати пошуку';
 ?>
 
-<h1>Результати пошуку</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Результати пошуку</h1>
 
-<div>
-    <?= Html::beginForm(['site/search'], 'get', ['class' => 'search-form']) ?>
-    <?= Html::textInput('SearchForm[text]', $searchForm->text, ['class' => 'form-control', 'placeholder' => 'Search']) ?>
-    <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-    <?= Html::endForm() ?>
+    <div class="search-container mb-5">
+        <?= Html::beginForm(['site/search'], 'get', ['class' => 'd-flex align-items-center']) ?>
+
+        <?= Html::textInput('SearchForm[text]', $searchForm->text, [
+            'class' => 'form-control me-3 shadow-sm border-0 rounded-3',
+            'placeholder' => 'Введіть текст для пошуку...',
+            'style' => 'max-width: 600px; font-size: 14px;'
+        ]) ?>
+
+        <?= Html::submitButton('Пошук', [
+            'class' => 'btn btn-primary rounded-3 px-4 py-2 shadow-sm',
+            'style' => 'font-size: 14px;'
+        ]) ?>
+
+        <?= Html::endForm() ?>
+    </div>
+
+    <?php if ($dataProvider) : ?>
+        <div class="search-results">
+            <?= ListView::widget([
+                'dataProvider' => $dataProvider,
+                'itemView' => '_article', // Файл для відображення статті
+                'layout' => "{items}\n{pager}",
+                'options' => ['class' => 'list-unstyled'],
+            ]); ?>
+        </div>
+    <?php else : ?>
+        <p>Результатів не знайдено :(</p>
+    <?php endif; ?>
 </div>
-
-<?php if ($dataProvider): ?>
-    <?= ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemView' => '_article', // Файл для відображення статті
-        'layout' => "{items}\n{pager}",
-    ]); ?>
-<?php else: ?>
-    <p>No results found.</p>
-<?php endif; ?>

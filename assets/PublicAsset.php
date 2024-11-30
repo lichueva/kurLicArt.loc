@@ -20,6 +20,7 @@ class PublicAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         "public/css/bootstrap.min.css",
+        "public/css/bootstrap.css",
         "public/css/font-awesome.min.css",
         "public/css/animate.min.css",
         "public/css/owl.carousel.css",
@@ -27,8 +28,7 @@ class PublicAsset extends AssetBundle
         "public/css/owl.transitions.css",
         "public/css/style.css",
         "public/css/responsive.css",
-        "public/css/bootstrap.css",
-
+        "public/css/style_side.css",
     ];
     public $js = [
         //        "public/js/jquery-1.11.3.min.js",
