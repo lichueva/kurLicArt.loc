@@ -1,0 +1,107 @@
+/* Загальний стиль для віджетів */
+.widget {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для заголовків віджетів */
+.widget-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Стиль для популярних постів */
+.popular-post img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.popular-post img:hover {
+  transform: scale(1.05);
+}
+
+/* Стиль для контенту в популярних постах */
+.p-content {
+  padding-top: 10px;
+}
+
+.p-content a {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.p-content a:hover {
+  color: #007bff;
+}
+
+.p-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Стиль для останніх постів */
+.thumb-latest-posts .media {
+  margin-bottom: 15px;
+}
+
+.thumb-latest-posts .media-left {
+  margin-right: 15px;
+}
+
+.media-body .p-content a {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.media-body .p-content a:hover {
+  color: #007bff;
+}
+
+/* Стиль для списку категорій */
+.widget ul li {
+  padding-left: 0;
+}
+
+.widget ul li a {
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget ul li a:hover {
+  color: #007bff;
+}
+
+.widget ul li .post-count {
+  color: #777;
+}
+
+/* Додаткові стилі для зовнішнього вигляду */
+.primary-sidebar {
+  margin-top: 20px;
+}
+
+/* Стиль для кнопки пошуку */
+.btn-search {
+  background-color: #9b59b6; /* Світлофіолетовий колір фону */
+  color: white; /* Білий колір тексту */
+  border: none; /* Без рамки */
+}
+
+.btn-search:hover {
+  background-color: #8e44ad; /* Темніший відтінок фіолетового на ховері */
+  color: white; /* Білий колір тексту при наведенні */
+}

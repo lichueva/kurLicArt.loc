@@ -20,6 +20,7 @@ class PublicAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         "public/css/bootstrap.min.css",
+        "public/css/bootstrap.css",
         "public/css/font-awesome.min.css",
         "public/css/animate.min.css",
         "public/css/owl.carousel.css",
@@ -36,6 +37,7 @@ class PublicAsset extends AssetBundle
         "public/js/jquery.stickit.min.js",
         "public/js/menu.js",
         "public/js/scripts.js",
+        "public/js/bootstrap.js",
     ];
     public $depends = [];
 
