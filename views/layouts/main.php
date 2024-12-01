@@ -88,6 +88,7 @@ PublicAsset::register($this);
 
 
 
+
     <div class="content">
         <?= $content ?>
     </div>
