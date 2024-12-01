@@ -4,11 +4,11 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
 <!--main content start-->
-<div class="main-content">
+<div class="main-content pt-5">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <?php foreach ($articles as $article): ?>
+                <?php foreach ($articles as $article) : ?>
                     <article class="post">
                         <div class="post-thumb">
                             <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>"><img src="<?= $article->getImage(); ?>" alt=""></a>

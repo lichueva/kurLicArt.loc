@@ -8,7 +8,7 @@
 
 /* Стиль для заголовків віджетів */
 .widget-title {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
@@ -32,7 +32,7 @@
 }
 
 .p-content a {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
   text-decoration: none;
@@ -58,7 +58,7 @@
 }
 
 .media-body .p-content a {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
 }
@@ -73,7 +73,7 @@
 }
 
 .widget ul li a {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #333;
   text-decoration: none;
   display: flex;
@@ -104,4 +104,8 @@
 .btn-search:hover {
   background-color: #8e44ad; /* Темніший відтінок фіолетового на ховері */
   color: white; /* Білий колір тексту при наведенні */
+}
+
+body {
+  padding-top: 56px; /* Висота шапки */
 }

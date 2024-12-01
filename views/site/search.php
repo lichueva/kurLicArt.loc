@@ -6,36 +6,44 @@ use yii\helpers\Html;
 $this->title = 'Результати пошуку';
 ?>
 
-<div class="container mt-5">
-    <h1 class="mb-4">Результати пошуку</h1>
+<div class="container my-5">
+    <h1 class="mb-5 text-center fw-bold text-secondary">Результати пошуку</h1>
 
-    <div class="search-container mb-5">
-        <?= Html::beginForm(['site/search'], 'get', ['class' => 'd-flex align-items-center']) ?>
+    <!-- Пошукова форма -->
+    <div class="search-container mb-4">
+        <?= Html::beginForm(['site/search'], 'get', ['class' => 'd-flex justify-content-center']) ?>
 
         <?= Html::textInput('SearchForm[text]', $searchForm->text, [
-            'class' => 'form-control me-3 shadow-sm border-0 rounded-3',
+            'class' => 'form-control me-3',
             'placeholder' => 'Введіть текст для пошуку...',
-            'style' => 'max-width: 600px; font-size: 14px;'
+            'style' => 'max-width: 500px;'
         ]) ?>
 
         <?= Html::submitButton('Пошук', [
-            'class' => 'btn btn-primary rounded-3 px-4 py-2 shadow-sm',
-            'style' => 'font-size: 14px;'
+            'class' => 'btn btn-primary px-4',
         ]) ?>
 
         <?= Html::endForm() ?>
     </div>
 
-    <?php if ($dataProvider) : ?>
-        <div class="search-results">
+    <!-- Результати пошуку -->
+    <?php if ($dataProvider->getTotalCount() > 0) : ?>
+        <div class="search-results mt-5">
             <?= ListView::widget([
                 'dataProvider' => $dataProvider,
-                'itemView' => '_article', // Файл для відображення статті
-                'layout' => "{items}\n{pager}",
+                'itemView' => '_article', // Шаблон відображення однієї статті
+                'layout' => "{items}\n<div class='mt-4'>{pager}</div>",
                 'options' => ['class' => 'list-unstyled'],
+                'itemOptions' => ['class' => 'search-item mb-4 p-3 bg-white rounded-4'], // Видалено shadow-sm
+                'pager' => [
+                    'options' => ['class' => 'pagination justify-content-center'],
+                    'linkOptions' => ['class' => 'page-link'],
+                    'activePageCssClass' => 'active',
+                    'disabledPageCssClass' => 'disabled',
+                ],
             ]); ?>
         </div>
     <?php else : ?>
-        <p>Результатів не знайдено :(</p>
+        <p class="text-center text-muted">Результатів не знайдено :(</p>
     <?php endif; ?>
 </div>

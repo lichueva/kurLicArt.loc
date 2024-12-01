@@ -99,61 +99,66 @@ PublicAsset::register($this);
     <footer class="footer-widget-section bg-dark text-white py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <div class="about-img">
-                            <img src="/public/images/logo2.png" alt="">
-                        </div>
-                        <div class="about-content mt-3">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                            ut labore et dolore magna aliquyam erat, sed voluptua.
-                        </div>
-                        <div class="address mt-3">
-                            <h4>Contact Info</h4>
-                            <p>14529/12 NK Streets, DC, KZ</p>
-                            <p>Phone: +123 456 78900</p>
-                            <p>Email: info@mytreasure.com</p>
-                        </div>
+                <!-- Логотип і про нас -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <aside class="footer-widget text-center text-md-start">
+                        <img src="/public/images/logo_black.svg" alt="Логотип Photo Blog" class="img-fluid mb-3" style="max-height: 150px;width: 200px;">
+                        <p class="text-muted small">Відкривайте неймовірну фотографію та пізнавальні статті. Приєднуйтесь до нас, досліджуючи світ через об'єктив.</p>
+                        <p class="mt-3 small">
+                            <i class="bi bi-geo-alt me-2"></i>123 Вулиця Фотографії, Місто Образів, WP
+                            <br>
+                            <i class="bi bi-envelope me-2"></i>contact@photoblog.com
+                        </p>
                     </aside>
                 </div>
-                <div class="col-md-4">
+
+                <!-- Популярні категорії -->
+                <div class="col-md-4 mb-4 mb-md-0">
                     <aside class="footer-widget">
-                        <h4>Testimonials</h4>
-                        <div class="carousel slide" id="testimonialsCarousel" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                                    <strong>Sophia, CEO ReadyTheme</strong>
-                                </div>
-                                <div class="carousel-item">
-                                    <p>At vero eos et accusam justo duo dolores et ea rebum.</p>
-                                    <strong>John, Manager</strong>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon"></span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon"></span>
-                            </button>
-                        </div>
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Популярні категорії</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li><a href="#" class="text-white text-decoration-none">Пейзажі</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Портрети</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Вулична фотографія</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Дика природа</a></li>
+                        </ul>
                     </aside>
                 </div>
+
+                <!-- Останні пости -->
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h4>Custom Category Post</h4>
-                        <div class="custom-post">
-                            <a href="#">
-                                <img src="/public/images/footer-img.png" alt="" class="img-fluid rounded mb-2">
-                            </a>
-                            <a href="#" class="text-white text-decoration-none">Home is Peaceful Place</a>
-                            <p class="text-muted">February 15, 2016</p>
-                        </div>
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Останні пости</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/post-thumbnail-1.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Дослідження "Золотої години" у фотографії</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/post-thumbnail-2.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Топ-5 порад для фотографії дикої природи</span>
+                                </a>
+                            </li>
+                        </ul>
                     </aside>
+                </div>
+            </div>
+
+            <!-- Підвал -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="text-muted small mb-0">&copy; <?= date('Y') ?> Photo Blog. Фіксуючи моменти, що мають значення.</p>
                 </div>
             </div>
         </div>
     </footer>
+
+
+
+
 
     <?php $this->endBody() ?>
 </body>
