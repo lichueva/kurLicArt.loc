@@ -117,18 +117,19 @@ PublicAsset::register($this);
                     <aside class="footer-widget">
                         <h5 class="text-uppercase fw-bold text-center text-md-start">Популярні категорії</h5>
                         <ul class="list-unstyled mt-3">
-                            <li><a href="#" class="text-white text-decoration-none">Пейзажі</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">Портрети</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">Вулична фотографія</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">Дика природа</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=1#" class="text-white text-decoration-none">Техніка і обладнання</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=2#" class="text-white text-decoration-none">Поради та уроки</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=3#" class="text-white text-decoration-none">Натхнення</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=4#" class="text-white text-decoration-none">Обробка фото</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=5#" class="text-white text-decoration-none">Жанри фотографії</a></li>                            
                         </ul>
                     </aside>
                 </div>
 
-                <!-- Останні пости -->
+                
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h5 class="text-uppercase fw-bold text-center text-md-start">Останні пости</h5>
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Автори</h5>
                         <ul class="list-unstyled mt-3">
                             <li class="mb-3">
                                 <a href="#" class="d-flex align-items-center text-decoration-none text-white">
