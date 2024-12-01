@@ -131,3 +131,94 @@ body {
   color: white;
   /* Білий колір для тексту на кнопці */
 }
+
+/* Категорії та текст */
+.category-title a {
+  color: #6f42c1;
+  font-weight: 600;
+}
+
+.category-title a:hover {
+  color: #5a2c98;
+}
+
+/* Карточка новини */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Зображення */
+.post-thumb img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+/* Overlay для кнопки "Переглянути" */
+.post-thumb-overlay {
+  background-color: rgba(111, 66, 193, 0.7);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-thumb:hover .post-thumb-overlay {
+  opacity: 1;
+}
+
+/* Текст і відступи */
+.entry-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.entry-header h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6f42c1;
+}
+
+.entry-content p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Соціальні іконки */
+.views {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.views i {
+  color: #6f42c1;
+}
+
+.social-share-title {
+  font-size: 14px;
+}
+
+/* Адаптивність */
+@media (max-width: 767px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .entry-header h1 {
+    font-size: 1.25rem;
+  }
+}
