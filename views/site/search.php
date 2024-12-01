@@ -28,22 +28,23 @@ $this->title = 'Результати пошуку';
 
     <!-- Результати пошуку -->
     <?php if ($dataProvider->getTotalCount() > 0) : ?>
-        <div class="search-results mt-5">
+        <div class="row"> <!-- Сітка Bootstrap -->
             <?= ListView::widget([
                 'dataProvider' => $dataProvider,
-                'itemView' => '_article', // Шаблон відображення однієї статті
-                'layout' => "{items}\n<div class='mt-4'>{pager}</div>",
-                'options' => ['class' => 'list-unstyled'],
-                'itemOptions' => ['class' => 'search-item mb-4 p-3 bg-white rounded-4'], // Видалено shadow-sm
+                'itemView' => '_article', // Шаблон відображення статті
+                'layout' => "{items}\n<div class='mt-4'>{pager}</div>", // Макет із елементами та пагінацією
+                'options' => ['class' => 'row'], // Контейнер для елементів
+                'itemOptions' => ['class' => 'col-md-4 mb-4'], // Колонки Bootstrap
                 'pager' => [
-                    'options' => ['class' => 'pagination justify-content-center'],
-                    'linkOptions' => ['class' => 'page-link'],
-                    'activePageCssClass' => 'active',
-                    'disabledPageCssClass' => 'disabled',
+                    'options' => ['class' => 'pagination justify-content-center mt-4'], // Центрування пагінації
+                    'linkOptions' => ['class' => 'page-link'], // Стиль для посилань пагінації
+                    'activePageCssClass' => 'active', // Активна сторінка
+                    'disabledPageCssClass' => 'disabled', // Вимкнена сторінка
                 ],
             ]); ?>
         </div>
     <?php else : ?>
         <p class="text-center text-muted">Результатів не знайдено :(</p>
     <?php endif; ?>
+
 </div>
