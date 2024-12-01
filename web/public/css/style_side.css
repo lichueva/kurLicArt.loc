@@ -109,3 +109,25 @@
 body {
   padding-top: 56px; /* Висота шапки */
 }
+
+.text-purple {
+  color: #6f42c1 !important;
+  /* Фіолетовий колір для заголовка */
+}
+
+.btn-purple {
+  background-color: #6f42c1;
+  /* Фіолетовий колір для кнопки */
+  border-color: #6f42c1;
+}
+
+.btn-purple:hover {
+  background-color: #5a2e9b;
+  /* Трохи темніший фіолетовий для ефекту наведеного стану */
+  border-color: #5a2e9b;
+}
+
+.btn-purple.text-white {
+  color: white;
+  /* Білий колір для тексту на кнопці */
+}

@@ -7,7 +7,7 @@ $this->title = 'Результати пошуку';
 ?>
 
 <div class="container my-5">
-    <h1 class="mb-5 text-center fw-bold text-secondary">Результати пошуку</h1>
+    <h1 class="mb-5 text-center fw-bold text-purple">Результати пошуку</h1>
 
     <!-- Пошукова форма -->
     <div class="search-container mb-4">
@@ -20,7 +20,7 @@ $this->title = 'Результати пошуку';
         ]) ?>
 
         <?= Html::submitButton('Пошук', [
-            'class' => 'btn btn-primary px-4',
+            'class' => 'btn btn-purple px-4 text-white', // Додано клас text-white для тексту
         ]) ?>
 
         <?= Html::endForm() ?>

@@ -20,8 +20,7 @@
 
                     <p class="card-text fs-6"><?= htmlspecialchars($comment->text, ENT_QUOTES, 'UTF-8'); ?></p>
 
-                    <!-- Відповісти -->
-                    <a href="#" class="btn btn-outline-primary btn-sm">Відповісти</a>
+
                 </div>
             </div>
         </div>
@@ -54,7 +53,7 @@
             ])->label(false); ?>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg w-100">Коментувати</button>
+        <button type="submit" class="btn btn-purple text-white btn-lg w-100">Коментувати</button>
 
         <?php \yii\widgets\ActiveForm::end(); ?>
     </div><!--end leave comment-->
