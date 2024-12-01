@@ -53,8 +53,8 @@ use yii\widgets\LinkPager;
                                             </span>
                                         </div>
 
-                                        <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="btn btn-outline-purple btn-sm">
-                                            Продовжити читання
+                                        <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="btn btn-outline-purple btn-medium">
+                                            Читати
                                         </a>
                                     </div>
                                 </div>

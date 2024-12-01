@@ -151,7 +151,7 @@ PublicAsset::register($this);
             <!-- Підвал -->
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <p class="text-muted small mb-0" style="color: rgb(121 121 121) !important;">&copy; <?= date('Y') ?> PixelTales. Артеменко Денис, Лічуєва Людмила ІТ-03-2 </p>
+                    <p class="text-muted small mb-0" style="color: rgb(121 121 121) !important;">&copy; <?= date('Y') ?> PixelTales. Артеменко Денис ✲ Лічуєва Людмила ✲ ІТ.м-42 </p>
                 </div>
             </div>
         </div>
