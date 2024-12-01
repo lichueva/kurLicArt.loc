@@ -25,60 +25,63 @@ PublicAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid ms-5 me-5">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/">
+                <img src="/public/images/logo.png?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand fw-bold" href="/">
-                    <img src="/public/images/logo.png?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 40px;">
-                </a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bold" aria-current="page" href="/">Головна</a>
-                    </li>
-                </ul>
-                <?php if (Yii::$app->user->isGuest) : ?>
-                    <ul class="navbar-nav mb-2 mb-lg-0 fs-4">
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/login']) ?>">Вхід</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
-                        </li>
-                    </ul>
-                <?php else : ?>
-                    <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
-                    <?= Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->name . ')',
-                        ['class' => 'btn btn-link nav-link fs-4 fw-bold']
-                    ) ?>
-                    <?= Html::endForm() ?>
-                <?php endif; ?>
-                <aside class="border p-4 rounded-3 widget-search">
-                    <?php $form = \yii\widgets\ActiveForm::begin([
-                        'method' => 'get',
-                        'action' => Url::to(['site/search']),
-                        'options' => ['class' => 'search-form', 'role' => 'form'],
-                    ]); ?>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
 
-                    <div class="input-group mb-4">
-                        <?= $form->field(new \app\models\SearchForm(), 'text')->textInput([
-                            'class' => 'form-control form-control-lg border-0 rounded-3 shadow-sm',
-                            'placeholder' => 'Введіть текст для пошуку...',
-                            'aria-label' => 'Пошук'
+                    <aside role="search" class="mt-3">
+                        <?php
+                        $form = \yii\widgets\ActiveForm::begin([
+                            'method' => 'get',
+                            'action' => Url::to(['site/search']),
+                            'options' => ['role' => 'form', 'class' => 'd-flex'],
+                        ]);
+                        ?>
+                        <?= $form->field(new \app\models\SearchForm(), 'text', [
+                            'options' => ['class' => 'flex-grow-1 me-2'],
+                        ])->textInput([
+                            'class' => 'form-control',
+                            'placeholder' => 'Введіть текст...',
+                            'aria-label' => 'Пошук',
                         ])->label(false); ?>
+                        <button class="btn btn-secondary" type="submit">Пошук</button>
+                        <?php \yii\widgets\ActiveForm::end(); ?>
+                    </aside>
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 fs-4">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" aria-current="page" href="/">Головна</a>
+                        </li>
+                        <?php if (Yii::$app->user->isGuest) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/login']) ?>">Вхід</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
+                                <?= Html::submitButton(
+                                    'Logout (' . Yii::$app->user->identity->name . ')',
+                                    ['class' => 'btn btn-link nav-link fs-4 fw-bold']
+                                ) ?>
+                                <?= Html::endForm() ?>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
 
-                        <button class="btn btn-primary btn-lg rounded-3" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-
-                    <?php \yii\widgets\ActiveForm::end(); ?>
-                </aside>
-
-
+                </div>
             </div>
         </div>
     </nav>
