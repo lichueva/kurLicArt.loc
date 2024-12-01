@@ -27,7 +27,7 @@ class PublicAsset extends AssetBundle
         "public/css/owl.transitions.css",
         "public/css/style.css",
         "public/css/responsive.css", 
-        
+        "public/css/bootstrap.css",
     ];
     public $js = [
         //        "public/js/jquery-1.11.3.min.js",

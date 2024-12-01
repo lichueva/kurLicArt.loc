@@ -29,51 +29,50 @@ PublicAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar main-menu navbar-default">
-        <div class="container">
-            <div class="menu-content">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img src="/public/images/logo.jpg" alt=""></a>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Логотип -->
+        <a class="navbar-brand" href="/">
+            <img src="/public/images/logo.jpg" alt="">
+        </a>
 
+        <!-- Кнопка для мобільного меню -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- Основне меню -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
 
-                    <ul class="nav navbar-nav text-uppercase">
-                        <li><a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
-
-                        </li>
-                    </ul>
-                    <div class="i_con">
-                        <ul class="nav navbar-nav text-uppercase">
-                            <?php if (Yii::$app->user->isGuest): ?>
-                                <li><a href="<?= Url::toRoute(['auth/login']) ?>">Login</a></li>
-                                <li><a href="<?= Url::toRoute(['auth/signup']) ?>">Register</a></li>
-                            <?php else: ?>
-                                <?= Html::beginForm(['/auth/logout'], 'post')
-                                    . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->name . ')',
-                                        ['class' => 'btn btn-link logout', 'style' => "padding-top:10px;"]
-                                    )
-                                    . Html::endForm() ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
+            <!-- Правий блок (Авторизація) -->
+            <ul class="navbar-nav ms-auto text-uppercase">
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= Url::toRoute(['auth/login']) ?>">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= Url::toRoute(['auth/signup']) ?>">Register</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <?= Html::beginForm(['/auth/logout'], 'post')
+                            . Html::submitButton(
+                                'Logout (' . Yii::$app->user->identity->name . ')',
+                                ['class' => 'btn btn-link nav-link logout', 'style' => "padding-top:0;"]
+                            )
+                            . Html::endForm() ?>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+    </div>
+</nav>
+
 
 
     <?= $content ?>

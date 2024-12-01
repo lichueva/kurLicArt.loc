@@ -52,13 +52,7 @@ class AuthController extends Controller
         return $this->render('signup', ['model' => $model]);
     }
 
-    public function actionLoginVk($uid, $first_name, $photo)
-    {
-        $user = new User();
-        if ($user->saveFromVk($uid, $first_name, $photo)) {
-            return $this->redirect(['site/index']);
-        }
-    }
+    
 
     public function actionTest()
     {
@@ -67,9 +61,9 @@ class AuthController extends Controller
         Yii::$app->user->logout();
 
         if (Yii::$app->user->isGuest) {
-            echo 'Пользователь гость';
+            echo 'Користувач гість';
         } else {
-            echo 'Пользователь Авторизован';
+            echo 'Користувача авторизовано';
         }
     }
 }
