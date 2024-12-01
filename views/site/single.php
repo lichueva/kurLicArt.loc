@@ -6,25 +6,23 @@ use yii\helpers\Url;
 <div class="main-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <article class="post">
-                    <div class="post-thumb">
-                        <a ><img src="<?= $article->getImage(); ?>" alt=""></a>
+            <div class="col-md-8" style="padding-top: 20px;">
+                <article class="post mb-5">
+                    <div class="post-thumb mb-4 rounded shadow">
+                        <a><img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded"></a>
                     </div>
                     <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>"> <?= $article->category->title ?></a></h6>
-
-                            <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view', 'id' => $article->id]) ?>"><?= $article->title ?></a></h1>
-
+                        <header class="entry-header text-center mb-4">
+                            <h6 class="text-uppercase text-muted">
+                                <a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>" class="text-decoration-none"><?= $article->category->title ?></a>
+                            </h6>
+                            <h1 class="entry-title fw-bold"><?= $article->title ?></h1>
                         </header>
-                        <div class="entry-content">
-                            <?= $article->content ?>
+                        <div class="entry-content mb-4">
+                            <p class="text-justify lh-lg"><?= $article->content ?></p>
                         </div>
-
-                        <div class="social-share">
-                            <span
-                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name ?> On <?= $article->getDate(); ?></span>
+                        <div class="social-share d-flex justify-content-between align-items-center border-top pt-3">
+                            <span class="text-muted small">Автор: <strong><?= $article->author->name ?></strong> | <?= $article->getDate(); ?></span>
                         </div>
                     </div>
                 </article>

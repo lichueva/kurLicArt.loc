@@ -9,12 +9,14 @@ use yii\helpers\Url;
         <!-- Popular Posts Widget -->
 
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center mb-4">Популярні пости</h3>
+            <h3 class="widget-title text-uppercase text-center mb-4 fw-bold">Популярні пости</h3>
             <?php foreach ($popular as $article) : ?>
                 <div class="popular-post mb-3">
-                    <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="popular-img">
+                    <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="post-thumb">
                         <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded">
-                        <div class="p-overlay"></div>
+                        <div class="post-thumb-overlay">
+                            <span class="text-uppercase text-white fw-bold">Переглянути</span>
+                        </div>
                     </a>
                     <div class="p-content">
                         <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="text-uppercase d-block mb-2"><?= $article->title ?></a>
@@ -26,14 +28,16 @@ use yii\helpers\Url;
 
         <!-- Recent Posts Widget -->
         <aside class="widget pos-padding">
-            <h3 class="widget-title text-uppercase text-center mb-4">Нещодавні публікації</h3>
+            <h3 class="widget-title text-uppercase text-center mb-4 fw-bold">Нещодавні публікації</h3>
             <?php foreach ($recent as $article) : ?>
                 <div class="thumb-latest-posts mb-3">
                     <div class="media">
                         <div class="media-left">
-                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="popular-img">
+                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="post-thumb">
                                 <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded">
-                                <div class="p-overlay"></div>
+                                <div class="post-thumb-overlay">
+                                    <span class="text-uppercase text-white fw-bold">Переглянути</span>
+                                </div>
                             </a>
                         </div>
                         <div class="media-body p-content">
@@ -47,11 +51,12 @@ use yii\helpers\Url;
 
         <!-- Categories Widget -->
         <aside class="widget border pos-padding">
-            <h3 class="widget-title text-uppercase text-center mb-4">Категорії</h3>
+            <h3 class="widget-title text-uppercase text-center mb-4" fw-bold>Категорії</h3>
             <ul class="list-unstyled">
                 <?php foreach ($categories as $category) : ?>
                     <li class="mb-2">
-                        <a href="<?= Url::toRoute(['site/category', 'id' => $category->id]); ?>" class="d-flex justify-content-between text-decoration-none"><?= $category->title ?>
+                        <a href="<?= Url::toRoute(['site/category', 'id' => $category->id]); ?>" class="d-flex justify-content-between text-decoration-none category-link">
+                            <?= $category->title ?>
                             <span class="post-count text-muted">(<?= $category->getArticlesCount(); ?>)</span>
                         </a>
                     </li>
