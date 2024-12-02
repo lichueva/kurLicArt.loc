@@ -6,40 +6,30 @@ use yii\helpers\Url;
 <div class="main-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="<?= $article->getImage(); ?>" alt=""></a>
+            <div class="col-md-8" style="padding-top: 20px;">
+                <article class="post mb-5 rounded">
+                    <div class="post-thumb mb-2 rounded shadow" style="max-width: 500px; margin: 0 auto;">
+                        <a>
+                            <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+                        </a>
                     </div>
                     <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>"> <?= $article->category->title ?></a></h6>
-
-                            <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view', 'id' => $article->id]) ?>"><?= $article->title ?></a></h1>
-
-
+                        <header class="entry-header text-center mb-3">
+                            <h6 class="text-uppercase text-muted mb-2">
+                                <a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>" class="badge bg-secondary text-decoration-none"><?= $article->category->title ?></a>
+                            </h6>
+                            <h1 class="entry-title fw-bold fw-1"><?= $article->title ?></h1>
                         </header>
-                        <div class="entry-content">
-                            <?= $article->content ?>
+                        <div class="entry-content mb-4">
+                            <p class="text-justify lh-lg"><?= $article->content ?></p>
                         </div>
-                        <div class="decoration">
-                            <a href="#" class="btn btn-default">Decoration</a>
-                            <a href="#" class="btn btn-default">Decoration</a>
-                        </div>
-
-                        <div class="social-share">
-                            <span
-                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name ?> On <?= $article->getDate(); ?></span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="social-share d-flex justify-content-between align-items-center border-top pt-3">
+                            <span class="text-muted small">Автор: <strong><?= $article->author->name ?></strong> | <?= $article->getDate(); ?></span>
                         </div>
                     </div>
                 </article>
+
+
 
                 <?= $this->render('/partials/comment', [
                     'article' => $article,

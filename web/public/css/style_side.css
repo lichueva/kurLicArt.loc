@@ -8,7 +8,7 @@
 
 /* Стиль для заголовків віджетів */
 .widget-title {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
@@ -29,10 +29,12 @@
 /* Стиль для контенту в популярних постах */
 .p-content {
   padding-top: 10px;
+  font-weight: 600;
+  font-family: "Roboto Serif", sans-serif;
 }
 
 .p-content a {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
   text-decoration: none;
@@ -40,7 +42,67 @@
 }
 
 .p-content a:hover {
-  color: #007bff;
+  color: #5a36a3;
+}
+
+.bg-secondary {
+  background: rgb(218, 61, 120);
+  background: linear-gradient(
+    45deg,
+    rgba(218, 61, 120, 1) 0%,
+    rgba(240, 150, 92, 1) 0%,
+    rgba(180, 74, 191, 1) 100%
+  ) !important;
+}
+
+.btn-search {
+  background: linear-gradient(
+    45deg,
+    rgba(218, 61, 120, 1) 0%,
+    rgba(240, 150, 92, 1) 0%,
+    rgba(180, 74, 191, 1) 100%
+  ) !important;
+  color: #fff;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-search:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(240, 92, 130, 1) 0%,
+    rgba(255, 180, 100, 1) 50%,
+    rgba(190, 100, 200, 1) 100%
+  );
+  transform: scale(1.05);
+}
+
+.btn-search:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(218, 61, 120, 0.5);
+}
+
+.btn-search:active {
+  background: linear-gradient(
+    45deg,
+    rgba(190, 50, 100, 1) 0%,
+    rgba(220, 120, 80, 1) 50%,
+    rgba(150, 50, 150, 1) 100%
+  );
+  transform: scale(0.95);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-search:disabled {
+  background: linear-gradient(
+    45deg,
+    rgba(200, 200, 200, 1) 0%,
+    rgba(220, 220, 220, 1) 100%
+  );
+  color: rgba(255, 255, 255, 0.7);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .p-date {
@@ -58,7 +120,7 @@
 }
 
 .media-body .p-content a {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
 }
@@ -73,7 +135,7 @@
 }
 
 .widget ul li a {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #333;
   text-decoration: none;
   display: flex;
@@ -82,7 +144,7 @@
 }
 
 .widget ul li a:hover {
-  color: #007bff;
+  color: #5a36a3;
 }
 
 .widget ul li .post-count {
@@ -104,4 +166,99 @@
 .btn-search:hover {
   background-color: #8e44ad; /* Темніший відтінок фіолетового на ховері */
   color: white; /* Білий колір тексту при наведенні */
+}
+
+body {
+  padding-top: 56px; /* Висота шапки */
+}
+
+.text-purple {
+  color: #0f0212 !important;
+  /* Фіолетовий колір для заголовка */
+}
+
+.btn-purple {
+  background-color: #6f42c1;
+  /* Фіолетовий колір для кнопки */
+  border-color: #6f42c1;
+}
+
+.btn-purple:hover {
+  background-color: #5a2e9b;
+  /* Трохи темніший фіолетовий для ефекту наведеного стану */
+  border-color: #5a2e9b;
+}
+
+.btn-purple.text-white {
+  color: white;
+  /* Білий колір для тексту на кнопці */
+}
+
+.btn-outline-purple {
+  color: #6f42c1;
+  border-color: #6f42c1;
+  background-color: transparent;
+}
+
+.btn-outline-purple:hover {
+  color: #fff;
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+}
+
+.btn-outline-purple:focus,
+.btn-outline-purple:active {
+  color: #fff;
+  background-color: #5a2e9b;
+  border-color: #5a2e9b;
+  box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+}
+
+.btn-outline-purple:disabled {
+  color: #6f42c1;
+  background-color: transparent;
+  border-color: #6f42c1;
+  opacity: 0.5;
+}
+
+.post-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-thumb img {
+  transition: all 0.5s;
+}
+
+.post-thumb-overlay {
+  background: rgba(76, 0, 153, 0.7);
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-thumb:hover .post-thumb-overlay {
+  opacity: 1;
+}
+
+.post-thumb:hover img {
+  transform: scale(1.1);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.sidebar-img {
+  width: 100%; /* Зображення займає всю ширину контейнера */
+  max-height: 200px; /* Обмеження висоти */
+  object-fit: cover; /* Зберігає пропорції та обрізає зображення по висоті */
+  border-radius: 8px; /* Закруглення для гарного вигляду */
 }

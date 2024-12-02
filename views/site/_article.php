@@ -6,15 +6,16 @@ use app\assets\PublicAsset;
 use yii\widgets\LinkPager;
 
 /** @var $model app\models\Article */
+/** @var $model app\models\Category */
 PublicAsset::register($this);
 ?>
-<article class="post">
-    <div class="post-content">
-        <h2>
-            <a href="<?= Url::to(['site/view', 'id' => $model->id]) ?>">
-                <?= Html::encode($model->title) ?>
-            </a>
-        </h2>
-        <p><?= Html::encode($model->description) ?></p>
+<div class="card">
+    <div class="card-header">
+        <?= Html::encode($model->category->title ?? 'Без категорії') ?> <!-- Відображення категорії -->
     </div>
-</article>
+    <div class="card-body">
+        <h5 class="card-title fw-bold text-purple"><?= Html::encode($model->title) ?></h5> <!-- Заголовок статті жирним і фіолетовим -->
+        <p class="card-text"><?= Html::encode($model->description) ?></p> <!-- Опис статті -->
+        <a href="<?= Url::to(['site/view', 'id' => $model->id]) ?>" class="btn btn-purple text-white">Детальніше</a> <!-- Кнопка фіолетового кольору з білим текстом -->
+    </div>
+</div>

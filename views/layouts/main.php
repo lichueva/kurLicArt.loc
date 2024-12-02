@@ -20,65 +20,69 @@ PublicAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href="/public/images/favicon.ico?v=<?= time(); ?>" type="image/x-icon">
 </head>
 
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid ms-5 me-5">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid col-md-8">
+            <a class="navbar-brand fw-bold" href="/">
+                <img src="/public/images/logo.svg?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 55px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand fw-bold" href="/">
-                    <img src="/public/images/logo.png?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 40px;">
-                </a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bold" aria-current="page" href="/">Головна</a>
-                    </li>
-                </ul>
-                <?php if (Yii::$app->user->isGuest) : ?>
-                    <ul class="navbar-nav mb-2 mb-lg-0 fs-4">
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/login']) ?>">Вхід</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
-                        </li>
-                    </ul>
-                <?php else : ?>
-                    <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
-                    <?= Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->name . ')',
-                        ['class' => 'btn btn-link nav-link fs-4 fw-bold']
-                    ) ?>
-                    <?= Html::endForm() ?>
-                <?php endif; ?>
-                <aside class="border p-4 rounded-3 widget-search">
-                    <?php $form = \yii\widgets\ActiveForm::begin([
-                        'method' => 'get',
-                        'action' => Url::to(['site/search']),
-                        'options' => ['class' => 'search-form', 'role' => 'form'],
-                    ]); ?>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fs-4 fw-bold " id="offcanvasNavbarLabel">Меню</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
 
-                    <div class="input-group mb-4">
-                        <?= $form->field(new \app\models\SearchForm(), 'text')->textInput([
-                            'class' => 'form-control form-control-lg border-0 rounded-3 shadow-sm',
-                            'placeholder' => 'Введіть текст для пошуку...',
-                            'aria-label' => 'Пошук'
+                    <aside role="search" class="mt-3">
+                        <?php
+                        $form = \yii\widgets\ActiveForm::begin([
+                            'method' => 'get',
+                            'action' => Url::to(['site/search']),
+                            'options' => ['role' => 'form', 'class' => 'd-flex'],
+                        ]);
+                        ?>
+                        <?= $form->field(new \app\models\SearchForm(), 'text', [
+                            'options' => ['class' => 'flex-grow-1 me-2'],
+                        ])->textInput([
+                            'class' => 'form-control',
+                            'placeholder' => 'Введіть текст...',
+                            'aria-label' => 'Пошук',
                         ])->label(false); ?>
+                        <button class="btn btn-search " type="submit">Пошук</button>
+                        <?php \yii\widgets\ActiveForm::end(); ?>
+                    </aside>
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" style="padding-top: 50px;" aria-current="page" href="/">Головна</a>
+                        </li>
+                        <?php if (Yii::$app->user->isGuest) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/login']) ?>">Вхід</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
+                                <?= Html::submitButton(
+                                    'Вийти (' . Yii::$app->user->identity->name . ')',
+                                    ['class' => 'btn btn-link nav-link fw-bold']
+                                ) ?>
+                                <?= Html::endForm() ?>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
 
-                        <button class="btn btn-primary btn-lg rounded-3" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-
-                    <?php \yii\widgets\ActiveForm::end(); ?>
-                </aside>
-
-
+                </div>
             </div>
         </div>
     </nav>
@@ -96,61 +100,67 @@ PublicAsset::register($this);
     <footer class="footer-widget-section bg-dark text-white py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <div class="about-img">
-                            <img src="/public/images/logo2.png" alt="">
-                        </div>
-                        <div class="about-content mt-3">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                            ut labore et dolore magna aliquyam erat, sed voluptua.
-                        </div>
-                        <div class="address mt-3">
-                            <h4>Contact Info</h4>
-                            <p>14529/12 NK Streets, DC, KZ</p>
-                            <p>Phone: +123 456 78900</p>
-                            <p>Email: info@mytreasure.com</p>
-                        </div>
+                <!-- Логотип і про нас -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <aside class="footer-widget text-center text-md-start">
+                        <img src="/public/images/logo_black.svg?v=<?= time(); ?>" alt="Логотип PixelTail" class="img-fluid mb-3" style="width: 250px; ">
+                        <p class="text-muted small" style="color: rgb(121 121 121) !important;">Відкривайте неймовірну фотографію та пізнавальні статті. Приєднуйтесь до нас, досліджуючи світ через об'єктив.</p>
+                        <p class="mt-3 small">
+                            <i class="bi bi-geo-alt me-2"></i>123 Вулиця Фотографії, Місто Образів, WP
+                            <br>
+                            <i class="bi bi-envelope me-2"></i>contact@photoblog.com
+                        </p>
                     </aside>
                 </div>
-                <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <h4>Testimonials</h4>
-                        <div class="carousel slide" id="testimonialsCarousel" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                                    <strong>Sophia, CEO ReadyTheme</strong>
-                                </div>
-                                <div class="carousel-item">
-                                    <p>At vero eos et accusam justo duo dolores et ea rebum.</p>
-                                    <strong>John, Manager</strong>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon"></span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon"></span>
-                            </button>
-                        </div>
+
+                <!-- Популярні категорії -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <aside class="footer-widget" style="padding-top: 150px;">
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Популярні категорії</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li><a href="http://kurlicart.loc/site/category?id=1#" class="text-white text-decoration-none">Техніка і обладнання</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=2#" class="text-white text-decoration-none">Поради та уроки</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=3#" class="text-white text-decoration-none">Натхнення</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=4#" class="text-white text-decoration-none">Обробка фото</a></li>
+                            <li><a href="http://kurlicart.loc/site/category?id=5#" class="text-white text-decoration-none">Жанри фотографії</a></li>
+                        </ul>
                     </aside>
                 </div>
+
+
                 <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <h4>Custom Category Post</h4>
-                        <div class="custom-post">
-                            <a href="#">
-                                <img src="/public/images/footer-img.png" alt="" class="img-fluid rounded mb-2">
-                            </a>
-                            <a href="#" class="text-white text-decoration-none">Home is Peaceful Place</a>
-                            <p class="text-muted">February 15, 2016</p>
-                        </div>
+                    <aside class="footer-widget" style="padding-top: 150px;">
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Автори</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/blog-1.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Дослідження "Золотої години" у фотографії</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/blog-2.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Топ-5 порад для фотографії дикої природи</span>
+                                </a>
+                            </li>
+                        </ul>
                     </aside>
+                </div>
+            </div>
+
+            <!-- Підвал -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="text-muted small mb-0" style="color: rgb(121 121 121) !important;">&copy; <?= date('Y') ?> PixelTales. Артеменко Денис ✲ Лічуєва Людмила ✲ ІТ.м-42 </p>
                 </div>
             </div>
         </div>
     </footer>
+
+
+
+
 
     <?php $this->endBody() ?>
 </body>

@@ -19,7 +19,7 @@ class PublicAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        "public/css/bootstrap.min.css",
+
         "public/css/bootstrap.css",
         "public/css/font-awesome.min.css",
         "public/css/animate.min.css",
@@ -27,12 +27,12 @@ class PublicAsset extends AssetBundle
         "public/css/owl.theme.css",
         "public/css/owl.transitions.css",
         "public/css/style.css",
-        "public/css/responsive.css", 
-        "public/css/bootstrap.css",
+        "public/css/responsive.css",
+        "public/css/style_side.css",
     ];
     public $js = [
         //        "public/js/jquery-1.11.3.min.js",
-        "public/js/bootstrap.min.js",
+
         "public/js/owl.carousel.min.js",
         "public/js/jquery.stickit.min.js",
         "public/js/menu.js",
