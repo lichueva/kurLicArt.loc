@@ -49,24 +49,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
-<style>
-    .btn-purple {
-        background-color: #6f42c1;
-        border-color: #6f42c1;
-    }
-
-    .btn-purple:hover {
-        background-color: #5a2f98;
-        border-color: #5a2f98;
-    }
-
-    .site-login {
-        max-width: 400px;
-        margin: auto;
-    }
-
-    .min-vh-90 {
-        min-height: 90vh;
-    }
-</style>

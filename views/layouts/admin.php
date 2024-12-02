@@ -30,26 +30,26 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
         NavBar::begin([
-            'brandLabel' => 'My Company',
+            'brandLabel' => 'PixelTales',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
+                'class' => 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top',
             ],
         ]);
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
+            'options' => ['class' => 'navbar-nav ml-auto'],
             'items' => [
                 ['label' => 'Головна', 'url' => ['/admin/default/index']],
-                ['label' => 'Articles', 'url' => ['/admin/article/index']],
-                ['label' => 'Commentaries', 'url' => ['/admin/comment/index']],
-                ['label' => 'Categories', 'url' => ['/admin/category/index']],
-                ['label' => 'Tag', 'url' => ['/admin/tag/index']]
+                ['label' => 'Статті', 'url' => ['/admin/article/index']],
+                ['label' => 'Коментарі', 'url' => ['/admin/comment/index']],
+                ['label' => 'Категорії', 'url' => ['/admin/category/index']],
+                ['label' => 'Теги', 'url' => ['/admin/tag/index']],
             ],
         ]);
         NavBar::end();
         ?>
 
-        <div class="container">
+        <div class="container mt-5 pt-5">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -57,13 +57,8 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-            <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
+
 
     <?php $this->endBody() ?>
     <?php $this->registerJsFile('/ckeditor/ckeditor.js'); ?>
