@@ -20,7 +20,7 @@ $this->title = 'Результати пошуку';
         ]) ?>
 
         <?= Html::submitButton('Пошук', [
-            'class' => 'btn btn-purple px-4 text-white', // Додано клас text-white для тексту
+            'class' => 'btn btn-search', // Додано клас text-white для тексту
         ]) ?>
 
         <?= Html::endForm() ?>

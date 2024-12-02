@@ -20,6 +20,7 @@ PublicAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href="/public/images/favicon.ico?v=<?= time(); ?>" type="image/x-icon">
 </head>
 
 <body>
@@ -35,7 +36,7 @@ PublicAsset::register($this);
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fs-4 fw-bold" id="offcanvasNavbarLabel">Меню</h5>
+                    <h5 class="offcanvas-title fs-4 fw-bold " id="offcanvasNavbarLabel">Меню</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -55,7 +56,7 @@ PublicAsset::register($this);
                             'placeholder' => 'Введіть текст...',
                             'aria-label' => 'Пошук',
                         ])->label(false); ?>
-                        <button class="btn btn-secondary" type="submit">Пошук</button>
+                        <button class="btn btn-search " type="submit">Пошук</button>
                         <?php \yii\widgets\ActiveForm::end(); ?>
                     </aside>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
