@@ -7,16 +7,18 @@ use yii\helpers\Url;
     <div class="container">
         <div class="row">
             <div class="col-md-8" style="padding-top: 20px;">
-                <article class="post mb-5">
-                    <div class="post-thumb mb-4 rounded shadow">
-                        <a><img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded"></a>
+                <article class="post mb-5 rounded">
+                    <div class="post-thumb mb-2 rounded shadow" style="max-width: 500px; margin: 0 auto;">
+                        <a>
+                            <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+                        </a>
                     </div>
                     <div class="post-content">
-                        <header class="entry-header text-center mb-4">
-                            <h6 class="text-uppercase text-muted">
-                                <a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>" class="text-decoration-none"><?= $article->category->title ?></a>
+                        <header class="entry-header text-center mb-3">
+                            <h6 class="text-uppercase text-muted mb-2">
+                                <a href="<?= Url::toRoute(['site/category', 'id' => $article->category->id]) ?>" class="badge bg-secondary text-decoration-none"><?= $article->category->title ?></a>
                             </h6>
-                            <h1 class="entry-title fw-bold"><?= $article->title ?></h1>
+                            <h1 class="entry-title fw-bold fw-1"><?= $article->title ?></h1>
                         </header>
                         <div class="entry-content mb-4">
                             <p class="text-justify lh-lg"><?= $article->content ?></p>
@@ -26,6 +28,8 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
+
+
 
                 <?= $this->render('/partials/comment', [
                     'article' => $article,

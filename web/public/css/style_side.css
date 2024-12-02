@@ -144,7 +144,7 @@
 }
 
 .widget ul li a:hover {
-  color: #007bff;
+  color: #5a36a3;
 }
 
 .widget ul li .post-count {
@@ -254,4 +254,11 @@ body {
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.sidebar-img {
+  width: 100%; /* Зображення займає всю ширину контейнера */
+  max-height: 200px; /* Обмеження висоти */
+  object-fit: cover; /* Зберігає пропорції та обрізає зображення по висоті */
+  border-radius: 8px; /* Закруглення для гарного вигляду */
 }
