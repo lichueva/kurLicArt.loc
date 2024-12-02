@@ -35,21 +35,21 @@ Table of contents
 24. header page
 
 -------------------------------------------------------------------*/
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,600);
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
 
 /*--------------------------------------
     elements
 --------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   background: #f4f4f4;
 }
 
 span,
 p,
 input {
-  font-family: "Merriweather", serif;
+  font-family: "Inter", serif;
   line-height: 26px;
 }
 
@@ -57,14 +57,18 @@ img {
   max-width: 100%;
 }
 
+h3 {
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
   font-weight: 600;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto Serif", sans-serif;
 }
 
 a {
@@ -577,7 +581,7 @@ subscribe newsletter
   letter-spacing: 1px;
   font-size: 12px;
   padding: 9px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .btn-subscribe:hover {
@@ -790,8 +794,7 @@ Categories
   font-weight: 500;
   color: #323232;
   text-decoration: none;
-  text-transform: uppercase;
-  font-family: "Merriweather", serif;
+  font-family: "Roboto Serif", serif;
   transition: all 0.33s;
 }
 
@@ -859,7 +862,7 @@ footer instragram
 .about-content {
   padding-top: 35px;
   line-height: 24px;
-  font-family: "Merriweather", serif;
+  font-family: "Roboto Serif", serif;
 }
 
 .address {
@@ -980,7 +983,7 @@ athuor
 
 .author-id .author-text h4:last-child {
   font-size: 11px;
-  font-family: "Merriweather", serif;
+  font-family: "Roboto Serif", serif;
 }
 
 .author-id .author-text {
@@ -1020,7 +1023,7 @@ athuor
   padding: 15px 0;
   color: #e2e2e2;
   line-height: 30px;
-  font-family: "Merriweather", serif;
+  font-family: "Roboto Serif", serif;
   font-size: 13px;
 }
 

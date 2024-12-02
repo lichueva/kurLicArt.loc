@@ -29,6 +29,8 @@
 /* Стиль для контенту в популярних постах */
 .p-content {
   padding-top: 10px;
+  font-weight: 600;
+  font-family: "Roboto Serif", sans-serif;
 }
 
 .p-content a {

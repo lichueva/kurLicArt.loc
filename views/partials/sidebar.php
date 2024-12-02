@@ -27,24 +27,24 @@ use yii\helpers\Url;
         </aside>
 
         <!-- Recent Posts Widget -->
-        <aside class="widget pos-padding">
+        <aside class="widget">
             <h3 class="widget-title text-uppercase text-center mb-4 fw-bold">Нещодавні публікації</h3>
             <?php foreach ($recent as $article) : ?>
-                <div class="thumb-latest-posts mb-3">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="post-thumb">
-                                <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded">
-                                <div class="post-thumb-overlay">
-                                    <span class="text-uppercase text-white fw-bold">Переглянути</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media-body p-content">
-                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="text-uppercase d-block mb-2"><?= $article->title ?></a>
-                            <span class="p-date text-muted"><?= $article->getDate(); ?></span>
-                        </div>
+                <div class="popular-post mb-3">
+
+                    <div class="media-left">
+                        <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="post-thumb">
+                            <img src="<?= $article->getImage(); ?>" alt="" class="img-fluid rounded">
+                            <div class="post-thumb-overlay">
+                                <span class="text-uppercase text-white fw-bold">Переглянути</span>
+                            </div>
+                        </a>
                     </div>
+                    <div class="p-content">
+                        <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>" class="text-uppercase d-block mb-2"><?= $article->title ?></a>
+                        <span class="p-date text-muted"><?= $article->getDate(); ?></span>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
         </aside>
