@@ -13,7 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="leave-comment mr0"><!--leave comment-->
-    <div class="row justify-content-center min-vh-90 align-items-center">
+    <div class="row justify-content-center min-vh-90 align-items-center" style="
+    padding-top: 56px;">
         <div class="col-md-6 col-lg-4">
             <div class="site-login p-4 border rounded shadow-sm">
                 <h2 class="text-center mb-4"><?= Html::encode($this->title) ?></h2>
@@ -35,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <div class="d-grid gap-2">
-                    <?= Html::submitButton('Увійти', ['class' => 'btn btn-purple btn-lg text-white', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Увійти', ['class' => 'btn btn-search btn-lg', 'name' => 'login-button']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

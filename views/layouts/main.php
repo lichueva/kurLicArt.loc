@@ -61,7 +61,7 @@ PublicAsset::register($this);
                     </aside>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold" aria-current="page" href="/">Головна</a>
+                            <a class="nav-link active fw-bold" style="padding-top: 50px;" aria-current="page" href="/">Головна</a>
                         </li>
                         <?php if (Yii::$app->user->isGuest) : ?>
                             <li class="nav-item">
@@ -74,8 +74,8 @@ PublicAsset::register($this);
                             <li class="nav-item">
                                 <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
                                 <?= Html::submitButton(
-                                    'Logout (' . Yii::$app->user->identity->name . ')',
-                                    ['class' => 'btn btn-link nav-link fs-4 fw-bold']
+                                    'Вийти (' . Yii::$app->user->identity->name . ')',
+                                    ['class' => 'btn btn-link nav-link fw-bold']
                                 ) ?>
                                 <?= Html::endForm() ?>
                             </li>

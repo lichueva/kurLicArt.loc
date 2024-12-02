@@ -12,7 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="leave-comment mr0"><!--leave comment-->
-    <div class="row justify-content-center min-vh-70 align-items-center">
+    <div class="row justify-content-center min-vh-70 align-items-center" style="
+    padding-top: 56px;
+">
         <div class="col-md-6 col-lg-4">
             <div class="site-login p-4 border rounded shadow-sm">
                 <h2 class="text-center mb-4"><?= Html::encode($this->title) ?></h2>
@@ -35,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control', 'placeholder' => 'Пароль'])->label(false) ?>
 
                 <div class="d-grid gap-2">
-                    <?= Html::submitButton('Зареєструватися', ['class' => 'btn btn-purple btn-lg text-white', 'name' => 'signup-button']) ?>
+                    <?= Html::submitButton('Зареєструватися', ['class' => 'btn btn-search btn-lg text-white', 'name' => 'signup-button']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>
