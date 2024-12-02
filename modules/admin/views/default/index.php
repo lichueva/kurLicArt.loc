@@ -1,12 +1,16 @@
 <div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
+    <h1>Ласкаво просимо до панелі адміністратора</h1>
     <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
+        Вітаємо вас на головній сторінці адміністративної панелі. Тут ви можете керувати всіма аспектами вашого сайту, такими як статті, категорії, коментарі, теги та інші важливі налаштування.
     </p>
     <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
+        У цьому розділі ви зможете:
     </p>
+    <ul>
+        <li>Переглядати та редагувати статті вашого сайту.</li>
+        <li>Управляти категоріями та тегами для статей.</li>
+        <li>Виводити коментарі користувачів для модерації.</li>
+        <li>Налаштовувати та моніторити роботу вашого веб-сайту.</li>
+    </ul>
+
 </div>
