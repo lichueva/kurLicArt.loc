@@ -25,6 +25,13 @@ use yii\helpers\Url;
                         </div>
                         <div class="social-share d-flex justify-content-between align-items-center border-top pt-3">
                             <span class="text-muted small">Автор: <strong><?= $article->author->name ?></strong> | <?= $article->getDate(); ?></span>
+                            <span class="text-muted small">Теги:
+                                <?php foreach ($article->tags as $tag): ?>
+                                    <a href="<?= Url::to(['site/search-by-tag', 'id' => $tag->id]) ?>" class="badge text-bg-dark">
+                                        <?= $tag->title ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </span>
                         </div>
                     </div>
                 </article>

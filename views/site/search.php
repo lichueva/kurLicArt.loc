@@ -7,7 +7,9 @@ $this->title = 'Результати пошуку';
 ?>
 
 <div class="container my-5">
-    <h1 class="mb-5 text-center fw-bold text-purple">Результати пошуку</h1>
+    <h1 class="mb-5 text-center fw-bold text-purple">
+        <?= isset($tagTitle) ? "Результати за тегом: " . Html::encode($tagTitle) : "Результати пошуку" ?>
+    </h1>
 
     <!-- Пошукова форма -->
     <div class="search-container mb-4">
@@ -20,7 +22,7 @@ $this->title = 'Результати пошуку';
         ]) ?>
 
         <?= Html::submitButton('Пошук', [
-            'class' => 'btn btn-search', // Додано клас text-white для тексту
+            'class' => 'btn btn-search',
         ]) ?>
 
         <?= Html::endForm() ?>
@@ -28,23 +30,22 @@ $this->title = 'Результати пошуку';
 
     <!-- Результати пошуку -->
     <?php if ($dataProvider->getTotalCount() > 0) : ?>
-        <div class="row"> <!-- Сітка Bootstrap -->
+        <div class="row">
             <?= ListView::widget([
                 'dataProvider' => $dataProvider,
-                'itemView' => '_article', // Шаблон відображення статті
-                'layout' => "{items}\n<div class='mt-4'>{pager}</div>", // Макет із елементами та пагінацією
-                'options' => ['class' => 'row'], // Контейнер для елементів
-                'itemOptions' => ['class' => 'col-md-4 mb-4'], // Колонки Bootstrap
+                'itemView' => '_article',
+                'layout' => "{items}\n<div class='mt-4'>{pager}</div>",
+                'options' => ['class' => 'row'],
+                'itemOptions' => ['class' => 'col-md-4 mb-4'],
                 'pager' => [
-                    'options' => ['class' => 'pagination justify-content-center mt-4'], // Центрування пагінації
-                    'linkOptions' => ['class' => 'page-link'], // Стиль для посилань пагінації
-                    'activePageCssClass' => 'active', // Активна сторінка
-                    'disabledPageCssClass' => 'disabled', // Вимкнена сторінка
+                    'options' => ['class' => 'pagination justify-content-center mt-4'],
+                    'linkOptions' => ['class' => 'page-link'],
+                    'activePageCssClass' => 'active',
+                    'disabledPageCssClass' => 'disabled',
                 ],
             ]); ?>
         </div>
     <?php else : ?>
         <p class="text-center text-muted">Результатів не знайдено :(</p>
     <?php endif; ?>
-
 </div>

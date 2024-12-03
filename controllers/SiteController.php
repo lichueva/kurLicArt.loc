@@ -13,6 +13,9 @@ use app\models\ContactForm;
 use app\models\Article;
 use app\models\Category;
 use app\models\CommentForm;
+use app\models\Tag;
+use app\models\TagSearch;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -65,7 +68,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $data = Article::getAll(5);
+        $data = Article::getAll(12);
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
@@ -145,4 +148,28 @@ class SiteController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionSearchByTag($id)
+{
+    $tag = Tag::findOne($id);
+
+    if (!$tag) {
+        throw new \yii\web\NotFoundHttpException('Тег не знайдено');
+    }
+
+    $query = $tag->getArticles(); // Статті, пов’язані з тегом
+
+    $dataProvider = new ActiveDataProvider([
+        'query' => $query,
+        'pagination' => [
+            'pageSize' => 10,
+        ],
+    ]);
+
+    return $this->render('search', [
+        'dataProvider' => $dataProvider,
+        'searchForm' => new \app\models\SearchForm(), // Якщо у вас є форма пошуку
+        'tagTitle' => $tag->title, // Назва тега для заголовка
+    ]);
+}
 }
