@@ -59,7 +59,7 @@ PublicAsset::register($this);
                         <button class="btn btn-search " type="submit">Пошук</button>
                         <?php \yii\widgets\ActiveForm::end(); ?>
                     </aside>
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link active fw-bold" style="padding-top: 50px;" aria-current="page" href="/">Головна</a>
                         </li>
@@ -71,6 +71,11 @@ PublicAsset::register($this);
                                 <a class="nav-link fw-bold" href="<?= Url::toRoute(['auth/signup']) ?>">Реєстрація</a>
                             </li>
                         <?php else : ?>
+                            <?php if (Yii::$app->user->identity->isAdmin) : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="<?= Url::toRoute(['admin/default/index']) ?>">Адмін-панель</a>
+                                </li>
+                            <?php endif; ?>
                             <li class="nav-item">
                                 <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'd-flex']) ?>
                                 <?= Html::submitButton(
@@ -81,6 +86,7 @@ PublicAsset::register($this);
                             </li>
                         <?php endif; ?>
                     </ul>
+
 
                 </div>
             </div>

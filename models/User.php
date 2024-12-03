@@ -65,6 +65,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return User::findOne($id);
     }
+
+    public function getIsAdmin()
+{
+    return $this->isAdmin == 1;
+}
     public function getId()
     {
         return $this->id;
