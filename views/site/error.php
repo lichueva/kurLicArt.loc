@@ -2,30 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div id="primary" class="content-area padding-content white-color">
-                    <main id="main" class="site-main" role="main">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Сталася помилка :/
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title">404</h1>
 
-                        <section class="error-404 not-found text-center">
-                            <h1 class="404">404</h1>
+                        <!-- <img style="width: 16rem;" src="/public/images/cat.jpg" alt=""> -->
 
-                            <p class="lead">Sorry, we could not found the page you are looking for!</p>
+                        <p class="card-text">На жаль, ми не змогли знайти сторінку, яку ви шукаєте!</p>
+                        <a href="/" class="btn btn-search">На головну</a>
+                    </div>
 
-                            <div class="row">
-                                <div class="col-sm-4 col-sm-offset-4">
-                                    <form role="search" method="get" id="searchform" action="#">
-                                        <div>
-                                            <input type="text" placeholder="Search and hit enter..." name="s" id="s" />
-                                        </div>
-                                    </form>
-                                    <p class="go-back-home"><a href="index.html">
-                                            Back to Home Page</a></p>
-                                </div>
-                            </div>
-
-                        </section><!-- .error-404 -->
-
-                    </main><!-- #main -->
-                </div><!-- #primary -->
+                </div>
             </div>
         </div>
     </div>

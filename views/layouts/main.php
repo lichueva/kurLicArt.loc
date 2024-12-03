@@ -26,7 +26,7 @@ PublicAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar bg-body-tertiary fixed-top">
+    <nav class="navbar bg-body-tertiary fixed-top" style="background-color: #fff;">
         <div class="container-fluid col-md-8">
             <a class="navbar-brand fw-bold" href="/">
                 <img src="/public/images/logo.svg?v=<?= time(); ?>" alt="Logo" class="d-inline-block align-top" style="height: 55px;">
@@ -86,18 +86,10 @@ PublicAsset::register($this);
                             </li>
                         <?php endif; ?>
                     </ul>
-
-
                 </div>
             </div>
         </div>
     </nav>
-
-
-
-
-
-
 
     <div class="content">
         <?= $content ?>
@@ -136,18 +128,18 @@ PublicAsset::register($this);
 
                 <div class="col-md-4">
                     <aside class="footer-widget" style="padding-top: 150px;">
-                        <h5 class="text-uppercase fw-bold text-center text-md-start">Автори</h5>
+                        <h5 class="text-uppercase fw-bold text-center text-md-start">Розробники</h5>
                         <ul class="list-unstyled mt-3">
                             <li class="mb-3">
-                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
-                                    <img src="/public/images/blog-1.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <span>Дослідження "Золотої години" у фотографії</span>
+                                <a  class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/photo_2024-12-03_23-20-22.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Лічуєва Людмила</span>
                                 </a>
                             </li>
                             <li class="mb-3">
-                                <a href="#" class="d-flex align-items-center text-decoration-none text-white">
-                                    <img src="/public/images/blog-2.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <span>Топ-5 порад для фотографії дикої природи</span>
+                                <a  class="d-flex align-items-center text-decoration-none text-white">
+                                    <img src="/public/images/photo_2024-12-03_23-19-06.jpg" alt="Ескіз посту" class="img-fluid rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <span>Артеменко Денис</span>
                                 </a>
                             </li>
                         </ul>
