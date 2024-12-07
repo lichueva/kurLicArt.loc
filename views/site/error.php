@@ -8,9 +8,6 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title">404</h1>
-
-                        <!-- <img style="width: 16rem;" src="/public/images/cat.jpg" alt=""> -->
-
                         <p class="card-text">На жаль, ми не змогли знайти сторінку, яку ви шукаєте!</p>
                         <a href="/" class="btn btn-search">На головну</a>
                     </div>
