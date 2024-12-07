@@ -127,7 +127,7 @@ class SiteController extends Controller
         if (Yii::$app->request->isPost) {
             $model->load(Yii::$app->request->post());
             if ($model->saveComment($id)) {
-                Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
+                Yii::$app->getSession()->setFlash('comment', 'Ваш коментар буде додано найближчим часом після обробки адміністратором!');
                 return $this->redirect(['site/view', 'id' => $id]);
             }
         }
@@ -168,8 +168,8 @@ class SiteController extends Controller
 
     return $this->render('search', [
         'dataProvider' => $dataProvider,
-        'searchForm' => new \app\models\SearchForm(), // Якщо у вас є форма пошуку
-        'tagTitle' => $tag->title, // Назва тега для заголовка
+        'searchForm' => new \app\models\SearchForm(), 
+        'tagTitle' => $tag->title, 
     ]);
 }
 }

@@ -2,58 +2,50 @@
 
 class LoginFormCest
 {
-    public function _before(\FunctionalTester $I)
+    public function _before(FunctionalTester $I)
     {
-        $I->amOnRoute('site/login');
     }
 
-    public function openLoginPage(\FunctionalTester $I)
+    // Тест успішного входу
+    public function tryToLogin(FunctionalTester $I)
     {
-        $I->see('Login', 'h1');
+        // Перехід на сторінку входу
+        $I->amOnPage('/auth/login');
+        $I->see('Вхід'); // Перевірка наявності заголовка або іншого елементу, який є на сторінці входу
 
+        // Заповнення форми коректними даними
+        $I->fillField('input[name="LoginForm[email]"]', 'user@example.com'); // Використовуємо name
+        $I->fillField('input[name="LoginForm[password]"]', 'correct-password');
+        $I->click('Увійти'); // Натискання кнопки для входу
+
+        // Перевірка, чи був зроблений редірект на іншу сторінку після успішного входу
+        $I->seeInCurrentUrl('/dashboard'); // Перевірка, що URL змінився на сторінку, на яку редіректить система після входу
+
+        // Перевірка, чи відображається елемент, доступний лише після авторизації
+        $I->see('Logout'); // Перевірка наявності кнопки Logout, яка доступна лише авторизованому користувачеві
     }
 
-    // demonstrates `amLoggedInAs` method
-    public function internalLoginById(\FunctionalTester $I)
+    // Тест для невірних даних
+    public function tryToLoginWithIncorrectCredentials(FunctionalTester $I)
     {
-        $I->amLoggedInAs(100);
-        $I->amOnPage('/');
-        $I->see('Logout (admin)');
+        $I->amOnPage('/auth/login'); // Перехід на сторінку входу
+        $I->fillField('input[name="LoginForm[email]"]', 'user@example.com'); // Введення некоректних даних
+        $I->fillField('input[name="LoginForm[password]"]', 'wrong-password');
+        $I->click('Увійти'); // Натискання на кнопку
+
+        // Перевірка, що повідомлення про помилку з'явилося на сторінці
+        $I->see('Incorrect email or password.'); // Перевірка наявності тексту повідомлення про помилку
     }
 
-    // demonstrates `amLoggedInAs` method
-    public function internalLoginByInstance(\FunctionalTester $I)
+    // Тест перевірки валідності поля email
+    public function tryToLoginWithInvalidEmail(FunctionalTester $I)
     {
-        $I->amLoggedInAs(\app\models\User::findByUsername('admin'));
-        $I->amOnPage('/');
-        $I->see('Logout (admin)');
-    }
+        $I->amOnPage('/auth/login'); // Перехід на сторінку входу
+        $I->fillField('input[name="LoginForm[email]"]', 'invalid-email'); // Введення неправильного email
+        $I->fillField('input[name="LoginForm[password]"]', 'correct-password');
+        $I->click('Увійти'); // Натискання на кнопку для входу
 
-    public function loginWithEmptyCredentials(\FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', []);
-        $I->expectTo('see validations errors');
-        $I->see('Username cannot be blank.');
-        $I->see('Password cannot be blank.');
-    }
-
-    public function loginWithWrongCredentials(\FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', [
-            'LoginForm[username]' => 'admin',
-            'LoginForm[password]' => 'wrong',
-        ]);
-        $I->expectTo('see validations errors');
-        $I->see('Incorrect username or password.');
-    }
-
-    public function loginSuccessfully(\FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', [
-            'LoginForm[username]' => 'admin',
-            'LoginForm[password]' => 'admin',
-        ]);
-        $I->see('Logout (admin)');
-        $I->dontSeeElement('form#login-form');              
+        // Перевірка, чи з'являється повідомлення про некоректний email
+        $I->see('Invalid email format.');
     }
 }

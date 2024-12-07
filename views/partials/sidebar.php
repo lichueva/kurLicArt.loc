@@ -28,6 +28,12 @@ use yii\helpers\Url;
 
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center mb-4 fw-bold">Нещодавні публікації</h3>
+            <?php
+            // Сортування статей за датою (від найновіших до найстаріших)
+            usort($recent, function ($a, $b) {
+                return strtotime($b->getDate()) - strtotime($a->getDate());
+            });
+            ?>
             <?php foreach ($recent as $article) : ?>
                 <div class="popular-post mb-3">
                     <div class="media-left">
@@ -45,6 +51,8 @@ use yii\helpers\Url;
                 </div>
             <?php endforeach; ?>
         </aside>
+
+
 
 
         <!-- Categories Widget -->

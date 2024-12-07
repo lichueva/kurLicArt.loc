@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Comments';
+$this->title = 'Коментарі';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <thead>
                 <tr>
                     <td>#</td>
-                    <td>Author</td>
-                    <td>Text</td>
-                    <td>Action</td>
+                    <td>Автор</td>
+                    <td>Наповнення</td>
+                    <td>Дія</td>
                 </tr>
             </thead>
 
@@ -37,11 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $comment->text ?></td>
                         <td>
                             <?php if ($comment->isAllowed()): ?>
-                                <a class="btn btn-warning" href="<?= Url::toRoute(['comment/disallow', 'id' => $comment->id]); ?>">Disallow</a>
+                                <a class="btn btn-warning" href="<?= Url::toRoute(['comment/disallow', 'id' => $comment->id]); ?>">Не відображати</a>
                             <?php else: ?>
-                                <a class="btn btn-success" href="<?= Url::toRoute(['comment/allow', 'id' => $comment->id]); ?>">Allow</a>
+                                <a class="btn btn-success" href="<?= Url::toRoute(['comment/allow', 'id' => $comment->id]); ?>">Відображати</a>
                             <?php endif ?>
-                            <a class="btn btn-danger" href="<?= Url::toRoute(['comment/delete', 'id' => $comment->id]); ?>">Delete</a>
+                            <a class="btn btn-danger" href="<?= Url::toRoute(['comment/delete', 'id' => $comment->id]); ?>">Видалити</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

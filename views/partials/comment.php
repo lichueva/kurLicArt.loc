@@ -32,7 +32,7 @@
 
 <?php if (!Yii::$app->user->isGuest) : ?>
     <div class="leave-comment card shadow-lg rounded-3 p-4 mb-4 border-0">
-        <h4 class="mb-3 fs-4">Залишити відповідь</h4>
+        <h4 class="mb-3 fs-4">Залишити коментар</h4>
 
         <?php if (Yii::$app->session->getFlash('comment')) : ?>
             <div class="alert alert-success mb-3" role="alert">
