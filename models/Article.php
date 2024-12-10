@@ -139,18 +139,18 @@ class Article extends \yii\db\ActiveRecord
         return Yii::$app->formatter->asDate($this->date);
     }
 
-    public static function getAll($pageSize = 5)
+    public static function getAll($pageSize = 9)
     {
-        // build a DB query to get all articles
+        // побудувати запит до БД, щоб отримати всі статті
         $query = Article::find();
 
-        // get the total number of articles (but do not fetch the article data yet)
+        // отримати загальну кількість статей (але ще не отримати дані про статті)
         $count = $query->count();
 
-        // create a pagination object with the total count
+        // створити об'єкт пагінації 
         $pagination = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
 
-        // limit the query using the pagination and retrieve the articles
+        // обмежити запит за допомогою пагінації та отримати статті
         $articles = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();

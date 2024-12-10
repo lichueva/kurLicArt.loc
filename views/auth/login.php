@@ -12,7 +12,7 @@ $this->title = 'Вхід';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="leave-comment mr0"><!--leave comment-->
+<div class="leave-comment mr0">
     <div class="row justify-content-center min-vh-90 align-items-center" style="
     padding-top: 56px;">
         <div class="col-md-6 col-lg-4">
